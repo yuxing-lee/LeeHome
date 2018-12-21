@@ -5,11 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { BookComponent } from './book/book.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookCreateComponent } from './book-create/book-create.component';
-import { BookEditComponent } from './book-edit/book-edit.component';
-import { HeaderComponent } from './header/header.component';
+import { BookComponent } from './component/book/book.component';
+import { BookDetailComponent } from './component/book-detail/book-detail.component';
+import { BookCreateComponent } from './component/book-create/book-create.component';
+import { BookEditComponent } from './component/book-edit/book-edit.component';
+import { HeaderComponent } from './component/header/header.component';
 
 
 const appRoutes: Routes = [

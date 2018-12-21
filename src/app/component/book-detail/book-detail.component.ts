@@ -9,7 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BookDetailComponent implements OnInit {
 
-  book = {};
+  bookObj: {} = {
+    "title": "",
+    "isbn": "",
+    "author": "",
+    "publisher": "",
+    "published_year": "",
+    "updated_date": "",
+    "_id": "",
+  };
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -19,7 +27,7 @@ export class BookDetailComponent implements OnInit {
 
   getBookDetail(id) {
     this.http.get('/book/'+id).subscribe(data => {
-      this.book = data;
+      this.bookObj = data;
     });
   }
 

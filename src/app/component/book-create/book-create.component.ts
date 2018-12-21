@@ -9,7 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookCreateComponent implements OnInit {
 
-  book = {};
+  bookObj: {} = {
+    "title": "",
+    "isbn": "",
+    "author": "",
+    "publisher": "",
+    "published_year": "",
+    "updated_date": "",
+    "_id": "",
+  };
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -17,7 +25,7 @@ export class BookCreateComponent implements OnInit {
   }
 
   saveBook() {
-    this.http.post('/book', this.book)
+    this.http.post('/book', this.bookObj)
       .subscribe(res => {
           let id = res['_id'];
           this.router.navigate(['/book-details', id]);

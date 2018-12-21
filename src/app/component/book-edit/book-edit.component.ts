@@ -9,7 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookEditComponent implements OnInit {
 
-  book = {};
+  bookObj: {} = {
+    "title": "",
+    "isbn": "",
+    "author": "",
+    "publisher": "",
+    "published_year": "",
+    "updated_date": "",
+    "_id": "",
+  };
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
@@ -19,7 +27,7 @@ export class BookEditComponent implements OnInit {
 
   getBook(id) {
     this.http.get('/book/'+id).subscribe(data => {
-      this.book = data;
+      this.bookObj = data;
     });
   }
 
