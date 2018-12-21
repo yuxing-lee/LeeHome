@@ -1,25 +1,25 @@
 <div class="container margin-top-container">
-  <h1>{{ book.title }}</h1>
+  <h1>{{ bookObj.title }}</h1>
   <dl class="list">
     <dt>ISBN</dt>
-    <dd>{{ book.isbn }}</dd>
+    <dd>{{ bookObj.isbn }}</dd>
     <dt>Author</dt>
-    <dd>{{ book.author }}</dd>
+    <dd>{{ bookObj.author }}</dd>
     <dt>Publisher</dt>
-    <dd>{{ book.publisher }}</dd>
+    <dd>{{ bookObj.publisher }}</dd>
     <dt>published_year</dt>
-    <dd>{{ book.published_year }}</dd>
+    <dd>{{ bookObj.published_year }}</dd>
     <dt>Update Date</dt>
-    <dd>{{ book.updated_date }}</dd>
+    <dd>{{ bookObj.updated_date }}</dd>
   </dl>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-md-1">
-      <a [routerLink]="['/book-edit', book._id]" class="btn btn-success">EDIT</a>
+      <a [routerLink]="['/bookObj-edit', bookObj._id]" class="btn btn-success">EDIT</a>
     </div>
     <div class="col-md-1">
-        <button class="btn btn-danger" type="button" (click)="deleteBook(book._id)">DELETE</button>
+        <button class="btn btn-danger" type="button" (click)="deletebookObj(bookObj._id)">DELETE</button>
       </div>
   </div>
 </div>
