@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { book } from '../../models/book.model';
 
 @Component({
   selector: 'app-book-detail',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BookDetailComponent implements OnInit {
 
-  bookObj: {} = {
+  bookObj: book = {
     "title": "",
     "isbn": "",
     "author": "",

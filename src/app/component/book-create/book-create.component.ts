@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { book } from '../../models/book.model'
 
 @Component({
   selector: 'app-book-create',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookCreateComponent implements OnInit {
 
-  bookObj: {} = {
+  bookObj: book = {
     "title": "",
     "isbn": "",
     "author": "",
