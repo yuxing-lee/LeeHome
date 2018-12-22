@@ -16,10 +16,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-1">
-      <a [routerLink]="['/bookObj-edit', bookObj._id]" class="btn btn-success">EDIT</a>
+      <a (click)="toUpdateView(bookObj._id)" class="btn btn-success">EDIT</a>
     </div>
     <div class="col-md-1">
-        <button class="btn btn-danger" type="button" (click)="deletebookObj(bookObj._id)">DELETE</button>
-      </div>
+      <button class="btn btn-danger" type="button" (click)="deletebookObj(bookObj._id)">DELETE</button>
+    </div>
   </div>
 </div>

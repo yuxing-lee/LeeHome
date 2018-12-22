@@ -27,12 +27,18 @@ export class BookDetailComponent implements OnInit {
   }
 
   getBookDetail(id) {
-    this.http.get('/book/' + id).subscribe(function (data: book) {
-      this.bookObj = data;
+    this.http.get('/book/' + id).subscribe(data => {
+      this.bookObj.title = data["title"];
+      this.bookObj.isbn = data["isbn"];
+      this.bookObj.author = data["author"];
+      this.bookObj.publisher = data["publisher"];
+      this.bookObj.published_year = data["published_year"];
+      this.bookObj.updated_date = data["updated_date"];
+      this.bookObj._id = data["_id"];
     });
   }
   
-  deleteBook(id) {
+  deletebookObj(id) {
     this.http.delete('/book/'+id)
       .subscribe(res => {
           this.router.navigate(['/books']);
@@ -40,6 +46,10 @@ export class BookDetailComponent implements OnInit {
           console.log(err);
         }
       );
+  }
+
+  toUpdateView(id) {
+    this.router.navigate(['/book-edit', id]);
   }
 
 }

@@ -10,15 +10,7 @@ import { book } from '../../models/book.model'
 })
 export class BookCreateComponent implements OnInit {
 
-  bookObj: book = {
-    "title": "",
-    "isbn": "",
-    "author": "",
-    "publisher": "",
-    "published_year": "",
-    "updated_date": "",
-    "_id": "",
-  };
+  bookObj: {} = {};
 
   constructor(private http: HttpClient, private router: Router) { }
 

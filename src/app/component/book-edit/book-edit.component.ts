@@ -27,16 +27,16 @@ export class BookEditComponent implements OnInit {
   }
 
   getBook(id) {
-    this.http.get('/book/' + id).subscribe(function (data: book) {
-      this.bookObj = data;
+    this.http.get('/book/' + id).subscribe(data => {
+      this.bookObj.title = data["title"];
+      this.bookObj.isbn = data["isbn"];
+      this.bookObj.author = data["author"];
+      this.bookObj.publisher = data["publisher"];
+      this.bookObj.published_year = data["published_year"];
+      this.bookObj.updated_date = data["updated_date"];
+      this.bookObj._id = data["_id"];
     });
   }
-
-  //getBook(id) {
-  //  this.http.get('/book/' + id).subscribe(data => {
-  //    this.bookObj = data;
-  //  });
-  //}
 
   updateBook(id, data) {
     this.http.put('/book/'+id, data)
