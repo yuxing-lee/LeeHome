@@ -18,9 +18,9 @@ export class SignupComponent {
   constructor(private router: Router,
               private UserService: UserService) { }
 
-  private signupData:user = { username: '', password: '' };
+  signupData:user = { username: '', password: '' };
 
-  private signup() {
+  signup() {
     this.UserService.signUp(this.signupData).pipe(takeUntil(this._subscriptions)).subscribe(
       resp => {
         this.router.navigate(['login']);
