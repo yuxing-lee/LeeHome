@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { book } from '../../models/book.model';
+
+import { BookService } from '../../services/book.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book',
@@ -9,15 +13,20 @@ import { Router } from '@angular/router';
 })
 export class BookComponent implements OnInit {
 
-  constructor(private http: HttpClient,
-              private router: Router) { }
+  private _subscriptions: Subject<void> = new Subject<void>();
 
-  books: any;
+  constructor(private router: Router,
+              private Bookservice: BookService) { }
+
+  private books: book[];
   
   ngOnInit() {
-    this.http.get('/book').subscribe(data => {
-      this.books = data;
-    });
+    this.Bookservice.getBooks().pipe(takeUntil(this._subscriptions)).subscribe(
+      books => {
+        this.books = books;
+      }, err => {
+        console.log(err);
+      });
   }
 
   show(id: string) {

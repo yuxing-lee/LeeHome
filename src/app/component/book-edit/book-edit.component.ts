@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { book } from '../../models/book.model';
+
+import { BookService } from '../../services/book.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-edit',
   templateUrl: './book-edit.component.html',
   styleUrls: ['./book-edit.component.css'],
 })
-export class BookEditComponent implements OnInit {
+export class BookEditComponent {
 
-  bookObj: book = {
+  private _subscriptions: Subject<void> = new Subject<void>();
+
+  private bookObj: book = {
     "title": "",
     "isbn": "",
     "author": "",
@@ -20,33 +25,31 @@ export class BookEditComponent implements OnInit {
     "_id": "",
   };
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, 
+              private route: ActivatedRoute,
+              private BookService: BookService) { }
 
-  ngOnInit() {
+  private ngOnInit() {
     this.getBook(this.route.snapshot.params['id']);
   }
 
-  getBook(id) {
-    this.http.get('/book/' + id).subscribe(data => {
-      this.bookObj.title = data["title"];
-      this.bookObj.isbn = data["isbn"];
-      this.bookObj.author = data["author"];
-      this.bookObj.publisher = data["publisher"];
-      this.bookObj.published_year = data["published_year"];
-      this.bookObj.updated_date = data["updated_date"];
-      this.bookObj._id = data["_id"];
-    });
+  private getBook(id) {
+    this.BookService.getBookDetail(id).pipe(takeUntil(this._subscriptions)).subscribe(
+      data => {
+        this.bookObj = data;
+      }, err =>{
+        console.log(err);
+      });
   }
 
-  updateBook(id, data) {
-    this.http.put('/book/'+id, data)
-      .subscribe(res => {
-          let id = res['_id'];
+  private updateBook(id, data) {
+    this.BookService.updateBook(id, data).pipe(takeUntil(this._subscriptions)).subscribe(
+      res => {
+        let id = res['_id'];
           this.router.navigate(['/book-details', id]);
-        }, (err) => {
-          console.log(err);
-        }
-      );
+      }, err =>{
+        console.log(err);
+      });
   }
 
 }

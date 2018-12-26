@@ -4,6 +4,6 @@ export interface book {
     author: string;
     publisher: string;
     published_year: string;
-    updated_date: string;
-    _id: string;
+    updated_date?: string;
+    _id?: string;
 }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { book } from '../../models/book.model'
+
+import { BookService } from '../../services/book.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-create',
@@ -10,7 +12,9 @@ import { book } from '../../models/book.model'
 })
 export class BookCreateComponent {
 
-  bookObj: {
+  private _subscriptions: Subject<void> = new Subject<void>();
+
+  private bookObj: {
     "title": string,
     "isbn": string,
     "author": string,
@@ -24,17 +28,17 @@ export class BookCreateComponent {
     "published_year": "",
   };
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private router: Router,
+              private BookService: BookService) { }
 
-  saveBook() {
-    console.log(this.bookObj)
-    this.http.post('/book', this.bookObj)
-      .subscribe(res => {
-          let id = res['_id'];
-          this.router.navigate(['/book-details', id]);
-      }, (err) => {
-        console.log(err);
-      });
+  private saveBook() {
+    this.BookService.saveBook(this.bookObj).pipe(takeUntil(this._subscriptions)).subscribe(
+      res => {
+        let id = res['_id'];
+        this.router.navigate(['/book-details', id]);
+    }, (err) => {
+      console.log(err);
+    });
   }
 
 }
