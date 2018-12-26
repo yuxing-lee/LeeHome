@@ -18,9 +18,9 @@ export class LoginComponent {
   constructor(private router: Router,
               private UserService: UserService) { }
 
-  private loginData:user = { username: '', password: '' };
+  loginData:user = { username: '', password: '' };
 
-  private login() {
+  login() {
     this.UserService.logIn(this.loginData).pipe(takeUntil(this._subscriptions)).subscribe(
       token => {
         localStorage.setItem('jwtToken', token);

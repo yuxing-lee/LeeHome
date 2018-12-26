@@ -15,7 +15,7 @@ export class BookEditComponent {
 
   private _subscriptions: Subject<void> = new Subject<void>();
 
-  private bookObj: book = {
+  bookObj: book = {
     "title": "",
     "isbn": "",
     "author": "",
@@ -33,7 +33,7 @@ export class BookEditComponent {
     this.getBook(this.route.snapshot.params['id']);
   }
 
-  private getBook(id) {
+  getBook(id) {
     this.BookService.getBookDetail(id).pipe(takeUntil(this._subscriptions)).subscribe(
       data => {
         this.bookObj = data;
@@ -42,7 +42,7 @@ export class BookEditComponent {
       });
   }
 
-  private updateBook(id, data) {
+  updateBook(id, data) {
     this.BookService.updateBook(id, data).pipe(takeUntil(this._subscriptions)).subscribe(
       res => {
         let id = res['_id'];

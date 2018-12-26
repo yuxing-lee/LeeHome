@@ -14,7 +14,7 @@ export class BookCreateComponent {
 
   private _subscriptions: Subject<void> = new Subject<void>();
 
-  private bookObj: {
+  bookObj: {
     "title": string,
     "isbn": string,
     "author": string,
@@ -31,7 +31,7 @@ export class BookCreateComponent {
   constructor(private router: Router,
               private BookService: BookService) { }
 
-  private saveBook() {
+  saveBook() {
     this.BookService.saveBook(this.bookObj).pipe(takeUntil(this._subscriptions)).subscribe(
       res => {
         let id = res['_id'];
