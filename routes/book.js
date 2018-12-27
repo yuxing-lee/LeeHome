@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Book = require('../models/Book.model.js');
-const verification = require('../services/verification.js')
 
 const passport = require('passport');
 require('../config/passport')(passport);

@@ -21,14 +21,15 @@ mongoose.connect(config.database, { useNewUrlParser: true, promiseLibrary: requi
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
-app.use(favicon(__dirname + '/src/img/lee.ico'));
+app.use(favicon(__dirname + '/src/img/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
-app.use('/user', user);
-app.use('/book', book);
+app.use('/api/user', user);
+app.use('/api/book', book);
+app.use('/login', express.static(path.join(__dirname, 'dist')));
 app.use('/books', express.static(path.join(__dirname, 'dist')));
 
 app.use(function(req, res, next) {
@@ -38,13 +39,16 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    message: err.message,
+    error: err
+  });
 });
 
 module.exports = app; 
