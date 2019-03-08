@@ -5,6 +5,8 @@ import { BookService } from '../../services/book.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { book } from '../../models/book.model'
+
 @Component({
   selector: 'app-book-create',
   templateUrl: './book-create.component.html',
@@ -14,19 +16,7 @@ export class BookCreateComponent {
 
   private _subscriptions: Subject<void> = new Subject<void>();
 
-  bookObj: {
-    "title": string,
-    "isbn": string,
-    "author": string,
-    "publisher": string,
-    "published_year": string
-  } = {
-    "title": "",
-    "isbn": "",
-    "author": "",
-    "publisher": "",
-    "published_year": "",
-  };
+  bookObj: book;
 
   constructor(private router: Router,
               private BookService: BookService) { }

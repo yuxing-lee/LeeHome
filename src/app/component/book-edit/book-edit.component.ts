@@ -15,15 +15,7 @@ export class BookEditComponent {
 
   private _subscriptions: Subject<void> = new Subject<void>();
 
-  bookObj: book = {
-    "title": "",
-    "isbn": "",
-    "author": "",
-    "publisher": "",
-    "published_year": "",
-    "updated_date": "",
-    "_id": "",
-  };
+  bookObj: book;
 
   constructor(private router: Router, 
               private route: ActivatedRoute,
