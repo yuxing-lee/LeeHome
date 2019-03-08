@@ -16,7 +16,7 @@ export class BookDetailComponent implements OnInit {
 
   private _subscriptions: Subject<void> = new Subject<void>();
 
-  bookObj: book;
+  bookObj = new book;
 
   constructor(private router: Router, 
               private route: ActivatedRoute, 

@@ -18,7 +18,7 @@ export class BookComponent implements OnInit {
   constructor(private router: Router,
               private Bookservice: BookService) { }
 
-  books: book[];
+  books = new Array<book>();
   
   ngOnInit() {
     this.Bookservice.getBooks().pipe(takeUntil(this._subscriptions)).subscribe(

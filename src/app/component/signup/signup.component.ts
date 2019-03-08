@@ -18,7 +18,7 @@ export class SignupComponent {
   constructor(private router: Router,
               private UserService: UserService) { }
 
-  signupData:user;
+  signupData = new user;
 
   signup() {
     this.UserService.signUp(this.signupData).pipe(takeUntil(this._subscriptions)).subscribe(
