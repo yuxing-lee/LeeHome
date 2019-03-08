@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(private router: Router,
               private UserService: UserService) { }
 
-  loginData:user = { username: '', password: '' };
+  loginData:user;
 
   login() {
     this.UserService.logIn(this.loginData).pipe(takeUntil(this._subscriptions)).subscribe(
