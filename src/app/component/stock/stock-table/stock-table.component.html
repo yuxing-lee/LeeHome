@@ -1,0 +1,20 @@
+<p-dataTable [value]="stockList" [loading]="loading" [sortField]="sortF" [sortOrder]="sortO"
+    (onSort)="changeSort($event)">
+    <p-column field="No" header="證券代號"></p-column>
+    <p-column field="name" header="證券名稱"></p-column>
+    <p-column field="shareCount" header="成交股數" [sortable]="true"></p-column>
+    <p-column field="transactionCount" header="成交筆數" [sortable]="true"></p-column>
+    <p-column field="totalPrice" header="成交金額" [sortable]="true"></p-column>
+    <p-column field="openingPrice" header="開盤價" [sortable]="true"></p-column>
+    <p-column field="highestPrice" header="最高價" [sortable]="true"></p-column>
+    <p-column field="lowestPrice" header="最低價" [sortable]="true"></p-column>
+    <p-column field="closingPrice" header="收盤價" [sortable]="true"></p-column>
+    <p-column field="upsAndDowns" header="漲跌" [sortable]="true"></p-column>
+    <p-column field="spread" header="漲跌價差" [sortable]="true"></p-column>
+    <p-column field="finalBuyPrice" header="最後揭示買價" [sortable]="true"></p-column>
+    <p-column field="finalBuyCount" header="最後揭示買量" [sortable]="true"></p-column>
+    <p-column field="finalSellPrice" header="最後揭示賣價" [sortable]="true"></p-column>
+    <p-column field="finalsellCount" header="最後揭示賣量" [sortable]="true"></p-column>
+    <p-column field="ratio" header="本益比" [sortable]="true"></p-column>
+    <p-column field="date" header="日期" [sortable]="true"></p-column>
+</p-dataTable>
