@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const config = require('../config/database');
 const User = require('../models/User.model.js');
 
 const jwt = require('jsonwebtoken');
@@ -32,7 +31,7 @@ router.post('/signin', function (req, res) {
     } else {
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (isMatch && !err) {
-          var token = jwt.sign(user.toJSON(), config.secret, {expiresIn:'1h'});
+          var token = jwt.sign(user.toJSON(), process.env.secretKey, {expiresIn:'1h'});
           res.send('JWT ' + token );
         } else {
           res.status(401).send('Authentication failed. Wrong password.');
