@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "nodejs-angular": {
+        "lee-home": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -130,5 +130,5 @@
             }
         }
     },
-    "defaultProject": "nodejs-angular"
+    "defaultProject": "lee-home"
 }

@@ -1,6 +1,6 @@
 {
-    "name": "nodejs-angular",
-    "version": "0.0.0",
+    "name": "lee-home",
+    "version": "2019.3.26.01",
     "scripts": {
         "ng": "ng",
         "start": "node ./bin/www",
