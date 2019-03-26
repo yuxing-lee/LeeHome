@@ -1,2 +1,2 @@
-<p-dropdown [options]="stockIndexList" [(ngModel)]="stock" (onChange)="selectStock(stock)" [style]="{'width':'100%'}"
+<p-dropdown [options]="stockIndexList" (onChange)="selectStock($event)" [style]="{'width':'100%'}"
     filter="true" optionLabel="stockName"></p-dropdown>

@@ -17,7 +17,7 @@ export class StockDropdownComponent implements OnInit {
 
     private _subscriptions: Subject<void> = new Subject<void>();
 
-    private stockIndexList = new Array<stockIndex>();
+    public stockIndexList = new Array<stockIndex>();
 
     constructor(private stockService: StockService) { }
 
@@ -31,7 +31,7 @@ export class StockDropdownComponent implements OnInit {
             });
     }
 
-    selectStock(stock: stockIndex): void {
+    public selectStock(stock: stockIndex): void {
         if (stock.index)
             this.stockOnChange.emit(stock);
     }

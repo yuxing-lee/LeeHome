@@ -1,5 +1,4 @@
-<p-dataTable [value]="stockList" [loading]="loading" [sortField]="sortF" [sortOrder]="sortO"
-    (onSort)="changeSort($event)">
+<p-dataTable [value]="stockList" [sortField]="sortBy" (onSort)="changeSort($event)">
     <p-column field="No" header="證券代號"></p-column>
     <p-column field="name" header="證券名稱"></p-column>
     <p-column field="shareCount" header="成交股數" [sortable]="true"></p-column>

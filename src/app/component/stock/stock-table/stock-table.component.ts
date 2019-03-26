@@ -19,7 +19,7 @@ export class StockTableComponent {
     private _subscriptions: Subject<void> = new Subject<void>();
 
     private stockList = new Array<stock>();
-    private sortBy = "date";
+    public sortBy = "date";
     constructor(private stockService: StockService) { }
 
     public currentStock(stock: stockIndex): void {
@@ -31,7 +31,7 @@ export class StockTableComponent {
                 console.log(err);
             });
     }
-    private changeSort(event) {
+    public changeSort(event) {
         if (!event.order) {
             this.sortBy = 'date';
         } else {
