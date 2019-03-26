@@ -18,8 +18,9 @@ export class StockTableComponent {
 
     private _subscriptions: Subject<void> = new Subject<void>();
 
-    private stockList = new Array<stock>();
+    public stockList = new Array<stock>();
     public sortBy = "date";
+    
     constructor(private stockService: StockService) { }
 
     public currentStock(stock: stockIndex): void {
