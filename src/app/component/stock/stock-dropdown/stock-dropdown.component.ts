@@ -31,7 +31,9 @@ export class StockDropdownComponent implements OnInit {
             });
     }
 
-    public selectStock(stock: stockIndex): void {
+    public selectStock(event): void {
+        let stock = event.value;
+        console.log(stock)
         if (stock.index)
             this.stockOnChange.emit(stock);
     }
