@@ -1,25 +1,25 @@
 <div class="container">
-  <h1>{{ bookObj.title }}</h1>
-  <dl class="list">
-    <dt>ISBN</dt>
-    <dd>{{ bookObj.isbn }}</dd>
-    <dt>Author</dt>
-    <dd>{{ bookObj.author }}</dd>
-    <dt>Publisher</dt>
-    <dd>{{ bookObj.publisher }}</dd>
-    <dt>published_year</dt>
-    <dd>{{ bookObj.published_year }}</dd>
-    <dt>Update Date</dt>
-    <dd>{{ bookObj.updated_date }}</dd>
-  </dl>
+    <h1>{{ bookObj.title }}</h1>
+    <dl class="list">
+        <dt>ISBN</dt>
+        <dd>{{ bookObj.isbn }}</dd>
+        <dt>Author</dt>
+        <dd>{{ bookObj.author }}</dd>
+        <dt>Publisher</dt>
+        <dd>{{ bookObj.publisher }}</dd>
+        <dt>published_year</dt>
+        <dd>{{ bookObj.published_year }}</dd>
+        <dt>Update Date</dt>
+        <dd>{{ bookObj.updated_date }}</dd>
+    </dl>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="col-md-1">
-      <a (click)="toUpdateView(bookObj._id)" class="btn btn-success">EDIT</a>
+    <div class="row">
+        <div class="col-md-1">
+            <a (click)="toUpdateView(bookObj._id)" class="btn btn-success">EDIT</a>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-danger" type="button" (click)="deletebook(bookObj._id)">DELETE</button>
+        </div>
     </div>
-    <div class="col-md-1">
-      <button class="btn btn-danger" type="button" (click)="deletebook(bookObj._id)">DELETE</button>
-    </div>
-  </div>
 </div>
