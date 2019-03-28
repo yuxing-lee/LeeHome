@@ -10,6 +10,12 @@ import { stockIndex } from '../models/stockIndex.model';
 @Injectable()
 export class StockService extends BaseService {
 
+    public getAllStock(): Observable<any> {
+        return this.http.get('/api/stock/', this.getRequestOptions())
+            .pipe(map(ApiEndpoint.ExtractData),
+                catchError(ApiEndpoint.HandleError));
+    }
+
     public getStockIndex(): Observable<stockIndex[]> {
         return this.http.get('/api/stock/index', this.getRequestOptions())
             .pipe(map(ApiEndpoint.ExtractData),

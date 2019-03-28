@@ -24,7 +24,21 @@ export class StockComponent {
 
     constructor(private stockService: StockService) { }
 
-    stockOnChange(stock: stockIndex) {
+    public stockOnChange(stock: stockIndex) {
         this.stockTableComponent.currentStock(stock);
+    }
+
+    public getAllStock() {
+        this.stockService.getAllStock().pipe(takeUntil(this._subscriptions)).subscribe(
+            data => {
+                for(let i = 0; i < data.length; i++)
+                {
+                    if(data[i]["rowCount"] != 52){
+                        console.log(data[i]["title"])
+                    }
+                }
+            }, err => {
+                console.log(err);
+            });
     }
 }

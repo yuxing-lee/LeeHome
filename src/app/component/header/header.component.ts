@@ -22,4 +22,8 @@ export class HeaderComponent {
     public signUp(): void {
         this.creatUserModal.show();
     }
+
+    public hrefTo(href: string): void {
+        this.router.navigate([href]);
+    }
 }

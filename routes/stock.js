@@ -2,18 +2,26 @@ const express = require('express');
 const router = express.Router();
 const GoogleSpreadsheet = require('google-spreadsheet');
 
-let StackIndex = require('../models/StackIndex.model');
-let Stack = require('../models/Stack.model');
+const StackIndex = require('../models/StackIndex.model');
+const Stack = require('../models/Stack.model');
 
-let config = require('../config/database');
+const config = require('../config/database');
 const passport = require('passport');
 require('../config/passport')(passport);
 
 let stocksDoc = new GoogleSpreadsheet(process.env.stocksDoc ? process.env.stocksDoc : config.stocksDoc);
 let stockListDoc = new GoogleSpreadsheet(process.env.stockListDoc ? process.env.stockListDoc : config.stockListDoc);
-let creds = JSON.parse(process.env.googleCreds) ? JSON.parse(process.env.googleCreds) : config.creds;
+let creds = process.env.googleCreds ? JSON.parse(process.env.googleCreds) : config.creds;
 
-// GET ALL INDEX
+
+router.get('/', passport.authenticate('jwt', { session: false }), function (req, res, next) {
+    stocksDoc.useServiceAccountAuth(creds, function (err) {
+        stocksDoc.getInfo(function (err, info) {
+            res.json(info.worksheets);
+        });
+    });
+});
+
 router.get('/index', passport.authenticate('jwt', { session: false }), function (req, res, next) {
     let stockIndexList = [];
     stockListDoc.useServiceAccountAuth(creds, function (err) {
