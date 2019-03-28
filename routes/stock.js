@@ -5,12 +5,13 @@ const GoogleSpreadsheet = require('google-spreadsheet');
 let StackIndex = require('../models/StackIndex.model');
 let Stack = require('../models/Stack.model');
 
+let config = require('../config/database');
 const passport = require('passport');
 require('../config/passport')(passport);
 
-let stocksDoc = new GoogleSpreadsheet(process.env.stocksDoc);
-let stockListDoc = new GoogleSpreadsheet(process.env.stockListDoc);
-let creds = JSON.parse(process.env.googleCreds);
+let stocksDoc = new GoogleSpreadsheet(process.env.stocksDoc ? process.env.stocksDoc : config.stocksDoc);
+let stockListDoc = new GoogleSpreadsheet(process.env.stockListDoc ? process.env.stockListDoc : config.stockListDoc);
+let creds = JSON.parse(process.env.googleCreds) ? JSON.parse(process.env.googleCreds) : config.creds;
 
 // GET ALL INDEX
 router.get('/index', passport.authenticate('jwt', { session: false }), function (req, res, next) {

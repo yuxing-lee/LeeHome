@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Book List
-        <a [routerLink]="['/book-create']" class="btn btn-default btn-lg">
+        <a (click)="createBook()" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </a>
     </h1>
@@ -12,18 +12,18 @@
                 <th>Publisher</th>
                 <th>published_year</th>
                 <th>Update Date</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let book of books">
+            <tr *ngFor="let book of books" (click)="getBookDetail(book._id)">
                 <td>{{ book.title }}</td>
                 <td>{{ book.author }}</td>
                 <td>{{ book.publisher }}</td>
                 <td>{{ book.published_year }}</td>
                 <td>{{ book.updated_date }}</td>
-                <td><a style="cursor: pointer;" (click)="show(book._id)">Show Detail</a></td>
             </tr>
         </tbody>
     </table>
 </div>
+<app-create-modal (saveComplete)="getAllBooks()"></app-create-modal>
+<app-edit-modal (editComplete)="getAllBooks()"></app-edit-modal>

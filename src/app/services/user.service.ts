@@ -7,16 +7,21 @@ import { ApiEndpoint } from '../consts/api-endpoint.const';
 @Injectable()
 export class UserService extends BaseService {
 
-  public logIn(loginData: object): Observable<string> {
-    return this.http.post('/api/user/signin', loginData)
-      .pipe(map(ApiEndpoint.ExtractData),
-            catchError(ApiEndpoint.HandleError));
-  }
+    public logIn(loginData: object): Observable<string> {
+        return this.http.post('/api/user/signin', loginData)
+            .pipe(map(ApiEndpoint.ExtractData),
+                catchError(ApiEndpoint.HandleError));
+    }
 
-  public signUp(signUpData: object): Observable<string> {
-    return this.http.post('/api/user/signup', signUpData)
-      .pipe(map(ApiEndpoint.ExtractData),
-            catchError(ApiEndpoint.HandleError));
-  }
+    public signUp(signUpData: object): Observable<string> {
+        return this.http.post('/api/user/signup', signUpData)
+            .pipe(map(ApiEndpoint.ExtractData),
+                catchError(ApiEndpoint.HandleError));
+    }
 
+    public checkJWT(): Observable<any> {
+        return this.http.post('/api/user/checkJWT', { token: localStorage.getItem('jwtToken')}, this.getRequestOptions())
+          .pipe(map(ApiEndpoint.ExtractData),
+                catchError(ApiEndpoint.HandleError));
+      }
 }

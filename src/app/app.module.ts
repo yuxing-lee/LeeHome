@@ -6,51 +6,47 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataTableModule, DropdownModule } from 'primeng/primeng';
+import { DataTableModule, DropdownModule, DialogModule } from 'primeng/primeng';
+import { ToastrModule } from 'ngx-toastr';
 
 //Components
 import { AppComponent } from './app.component';
 import { BookComponent } from './component/book/book.component';
-import { BookDetailComponent } from './component/book-detail/book-detail.component';
-import { BookCreateComponent } from './component/book-create/book-create.component';
-import { BookEditComponent } from './component/book-edit/book-edit.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from "./component/login/login.component";
-import { SignupComponent } from './component/signup/signup.component';
 import { StockComponent } from './component/stock/stock.component';
 import { StockDropdownComponent } from './component/stock/stock-dropdown/stock-dropdown.component';
 import { StockTableComponent } from './component/stock/stock-table/stock-table.component';
+import { CreateModalComponent } from './component/book/create-modal/create-modal.component';
+import { EditModalComponent } from './component/book/edit-modal/edit-modal.component';
+import { CreatUserModalComponent } from './component/header/creat-user-modal/creat-user-modal.component';
 
 //Services
 import { UserService } from './services/user.service';
 import { BookService } from './services/book.service';
 import { StockService } from './services/stock.service';
-
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
-    { path: 'books', component: BookComponent, data: { title: 'Book List' } },
-    { path: 'book-details/:id', component: BookDetailComponent, data: { title: 'Book Details' } },
-    { path: 'book-create', component: BookCreateComponent, data: { title: 'Create Book' } },
-    { path: 'book-edit/:id', component: BookEditComponent, data: { title: 'Edit Book' } },
+    { path: "", component: BookComponent, canActivate: [AuthService] },
+    { path: 'books', redirectTo: '/', pathMatch: 'full' },
     { path: 'login', component: LoginComponent, data: { title: 'Login' } },
-    { path: 'signup', component: SignupComponent, data: { title: 'Sign Up' } },
-    { path: 'stock', component: StockComponent, data: { title: 'Stock' } },
-    { path: '', redirectTo: '/login', pathMatch: 'full' }
+    { path: 'books', component: BookComponent, data: { title: 'Book List' }, canActivate: [AuthService] },
+    { path: 'stock', component: StockComponent, data: { title: 'Stock' }, canActivate: [AuthService] }
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
         BookComponent,
-        BookDetailComponent,
-        BookCreateComponent,
-        BookEditComponent,
         HeaderComponent,
         LoginComponent,
-        SignupComponent,
         StockComponent,
         StockDropdownComponent,
-        StockTableComponent
+        StockTableComponent,
+        CreateModalComponent,
+        EditModalComponent,
+        CreatUserModalComponent
     ],
     imports: [
         BrowserModule,
@@ -62,12 +58,15 @@ const appRoutes: Routes = [
         ),
         BrowserAnimationsModule,
         DataTableModule,
-        DropdownModule
+        DropdownModule,
+        DialogModule,
+        ToastrModule.forRoot()
     ],
     providers: [
         UserService,
         BookService,
-        StockService
+        StockService,
+        AuthService
     ],
     bootstrap: [AppComponent]
 })

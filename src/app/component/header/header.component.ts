@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { CreatUserModalComponent } from './creat-user-modal/creat-user-modal.component';
 
 @Component({
     selector: 'app-header',
@@ -7,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+    @ViewChild(CreatUserModalComponent) creatUserModal: CreatUserModalComponent;
+
+    constructor(private router: Router) { }
+
+    public logout(): void {
+        localStorage.removeItem('jwtToken');
+        this.router.navigate(['login']);
+    }
+
+    public signUp(): void {
+        this.creatUserModal.show();
+    }
 }

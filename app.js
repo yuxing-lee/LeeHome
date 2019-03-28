@@ -12,6 +12,7 @@ const passport = require('passport');
 
 //DB
 const mongoose = require('mongoose');
+const config = require('./config/database');
 
 //Routes
 const user = require('./routes/user');
@@ -19,7 +20,7 @@ const book = require('./routes/book');
 const stock = require('./routes/stock');
 
 mongoose.Promise = require('bluebird');
-mongoose.connect(process.env.mangoConnectString, { useNewUrlParser: true, promiseLibrary: mongoose.Promise })
+mongoose.connect(process.env.mangoConnectString ? process.env.mangoConnectString : config.database , { useNewUrlParser: true, promiseLibrary: mongoose.Promise })
     .then(() => console.log('connection succesful'))
     .catch((err) => console.error(err));
 

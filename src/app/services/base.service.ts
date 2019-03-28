@@ -6,19 +6,19 @@ import { ApiEndpoint } from '../consts/api-endpoint.const'
 @Injectable()
 export class BaseService {
 
-  private readonly _defaultContentType: string = ApiEndpoint.ContentTypes.JSON;
+    private readonly _defaultContentType: string = ApiEndpoint.ContentTypes.JSON;
 
-  constructor(protected http: Http) { }
+    constructor(protected http: Http) { }
 
-  protected getRequestOptions(contentType?: string): RequestOptions {
+    protected getRequestOptions(contentType?: string): RequestOptions {
 
-    let _token = localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : "";
-    
-    let _headers: Headers = new Headers();
-    _headers.append("Content-Type", this._defaultContentType);
-    _headers.append("Authorization", _token);
+        let _token = localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : "";
 
-    let options = new RequestOptions({ headers: _headers });
-    return options;
-  }
+        let _headers: Headers = new Headers();
+        _headers.append("Content-Type", this._defaultContentType ? this._defaultContentType : contentType);
+        _headers.append("Authorization", 'JWT ' + _token);
+
+        let options = new RequestOptions({ headers: _headers });
+        return options;
+    }
 }
