@@ -1,4 +1,4 @@
-<p-dataTable [value]="stockList" sortField="date" sortOrder="-1" (onSort)="changeSort($event)" [rows]="10" [paginator]="true" [pageLinks]="10" [rowsPerPageOptions]="[5,10,20]">
+<p-dataTable [value]="stockList" sortField="date" sortOrder="-1" [rows]="10" [paginator]="true" [pageLinks]="10" [rowsPerPageOptions]="[5,10,20]">
     <p-column field="No" header="證券代號"></p-column>
     <p-column field="name" header="證券名稱"></p-column>
     <p-column field="shareCount" header="成交股數" [sortable]="true"></p-column>
