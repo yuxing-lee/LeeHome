@@ -4,7 +4,12 @@
             <app-stock-dropdown (stockOnChange)="stockOnChange($event)"></app-stock-dropdown>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="loadding">
+        <div class="col-md-1">
+            <p-progressSpinner [style]="{width: '50px', height: '50px'}" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+        </div>
+    </div>
+    <div class="row" *ngIf="stockList.length != 0">
         <div class="col-md-12">
             <app-stock-line-chart [stockList]="stockList"></app-stock-line-chart>
         </div>

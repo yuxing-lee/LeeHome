@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataTableModule, DropdownModule, DialogModule, ChartModule } from 'primeng/primeng';
+import { DataTableModule, DropdownModule, DialogModule, ChartModule, ProgressSpinnerModule } from 'primeng/primeng';
 import { ToastrModule } from 'ngx-toastr';
 
 //Components
@@ -63,7 +63,8 @@ const appRoutes: Routes = [
         DropdownModule,
         DialogModule,
         ToastrModule.forRoot(),
-        ChartModule
+        ChartModule,
+        ProgressSpinnerModule
     ],
     providers: [
         UserService,

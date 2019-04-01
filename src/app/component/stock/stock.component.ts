@@ -19,13 +19,16 @@ export class StockComponent {
     private _subscriptions: Subject<void> = new Subject<void>();
 
     public stockList = new Array<stock>();
+    public loadding: boolean = false;
 
     constructor(private stockService: StockService) { }
 
     public stockOnChange(stock: stockIndex) {
+        this.loadding = true;
         this.stockService.getStockByIndex(stock.index).pipe(takeUntil(this._subscriptions)).subscribe(
             data => {
                 this.stockList = data.slice();
+                this.loadding = false;
             }, err => {
                 console.log(err);
             });
