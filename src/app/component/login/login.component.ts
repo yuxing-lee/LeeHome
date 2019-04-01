@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { user } from '../../models/user.model';
-import { UserService } from '../../services/user.service';
+
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+import { user } from '../../models/user.model';
+
+import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
     selector: 'app-login',
@@ -14,7 +19,9 @@ export class LoginComponent implements OnInit {
 
     private _subscriptions: Subject<void> = new Subject<void>();
 
-    constructor(private router: Router, private userService: UserService) { }
+    constructor(private router: Router, 
+                private userService: UserService,
+                private toastrService: ToastrService) { }
 
     public loginData = new user;
 
@@ -29,6 +36,7 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('jwtToken', token);
                 this.router.navigateByUrl('/books');
             }, err => {
+                this.toastrService.error("密碼輸入錯誤")
                 console.log(err);
             });
     }

@@ -2,28 +2,28 @@ export class stock {
 
     public No: string = "";
     public name: string = "";
-    public shareCount: number = 0;
-    public transactionCount: number = 0;
-    public totalPrice: number = 0;
-    public openingPrice: number = 0;
-    public highestPrice: number = 0;
-    public lowestPrice: number = 0;
-    public closingPrice: number = 0;
+    public shareCount: string = "";
+    public transactionCount: string = "";
+    public totalPrice: string = "";
+    public openingPrice: string = "";
+    public highestPrice: string = "";
+    public lowestPrice: string = "";
+    public closingPrice: string = "";
     public upsAndDowns: string = "";
     public spread: string = "";
-    public finalBuyPrice: number = 0;
-    public finalBuyCount: number = 0;
-    public finalSellPrice: number = 0;
-    public finalsellCount: number = 0;
-    public ratio: number = 0;
+    public finalBuyPrice: string = "";
+    public finalBuyCount: string = "";
+    public finalSellPrice: string = "";
+    public finalsellCount: string = "";
+    public ratio: string = "";
     public date: string = "";
 
-    constructor(No?: string, name?: string, shareCount?: number,
-                transactionCount?: number, totalPrice?: number, openingPrice?: number,
-                highestPrice?: number, lowestPrice?: number, closingPrice?: number,
-                upsAndDowns?: string, spread?: string, finalBuyPrice?: number,
-                finalBuyCount?: number, finalSellPrice?: number, finalsellCount?: number,
-                ratio?: number, date?: string) {
+    constructor(No?: string, name?: string, shareCount?: string,
+                transactionCount?: string, totalPrice?: string, openingPrice?: string,
+                highestPrice?: string, lowestPrice?: string, closingPrice?: string,
+                upsAndDowns?: string, spread?: string, finalBuyPrice?: string,
+                finalBuyCount?: string, finalSellPrice?: string, finalsellCount?: string,
+                ratio?: string, date?: string) {
         this.No = No;
         this.name = name;
         this.shareCount = shareCount;

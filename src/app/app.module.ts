@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataTableModule, DropdownModule, DialogModule } from 'primeng/primeng';
+import { DataTableModule, DropdownModule, DialogModule, ChartModule } from 'primeng/primeng';
 import { ToastrModule } from 'ngx-toastr';
 
 //Components
@@ -20,6 +20,7 @@ import { StockTableComponent } from './component/stock/stock-table/stock-table.c
 import { CreateModalComponent } from './component/book/create-modal/create-modal.component';
 import { EditModalComponent } from './component/book/edit-modal/edit-modal.component';
 import { CreatUserModalComponent } from './component/header/creat-user-modal/creat-user-modal.component';
+import { StockLineChartComponent } from './component/stock/stock-line-chart/stock-line-chart.component';
 
 //Services
 import { UserService } from './services/user.service';
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
         StockTableComponent,
         CreateModalComponent,
         EditModalComponent,
-        CreatUserModalComponent
+        CreatUserModalComponent,
+        StockLineChartComponent
     ],
     imports: [
         BrowserModule,
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
         DataTableModule,
         DropdownModule,
         DialogModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+        ChartModule
     ],
     providers: [
         UserService,

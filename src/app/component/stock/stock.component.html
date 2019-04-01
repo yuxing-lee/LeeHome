@@ -6,7 +6,12 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <app-stock-table></app-stock-table>
+            <app-stock-line-chart [stockList]="stockList"></app-stock-line-chart>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <app-stock-table [stockList]="stockList"></app-stock-table>
         </div>
     </div>
 </div>
