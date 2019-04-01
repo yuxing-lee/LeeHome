@@ -18,7 +18,7 @@ export class StockComponent {
 
     private _subscriptions: Subject<void> = new Subject<void>();
 
-    private stockList = new Array<stock>();
+    public stockList = new Array<stock>();
 
     constructor(private stockService: StockService) { }
 
