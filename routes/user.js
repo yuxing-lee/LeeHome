@@ -41,7 +41,7 @@ router.post('/signin', function (req, res) {
         else {
             user.comparePassword(req.body.password, function (err, isMatch) {
                 if (isMatch && !err) {
-                    var token = jwt.sign(user.toJSON(), process.env.secretKey ? process.env.secretKey : config.secret, { expiresIn: '1h' });
+                    var token = jwt.sign(user.toJSON(), process.env.secretKey ? process.env.secretKey : config.secretKey, { expiresIn: '1h' });
                     res.send(token);
                 } else
                     res.status(401).send('Authentication failed. Wrong password.');
@@ -55,7 +55,7 @@ router.post('/checkJWT', function (req, res, next) {
     if(!token)
         res.send(false);
     else
-        jwt.verify(token, process.env.secretKey ? process.env.secretKey : config.secret, function (err, decoded) {
+        jwt.verify(token, process.env.secretKey ? process.env.secretKey : config.secretKey, function (err, decoded) {
             if (err || !decoded) res.send(false)
             res.send(true);
         });

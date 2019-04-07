@@ -10,7 +10,7 @@ import { DataTableModule, DropdownModule, DialogModule, ChartModule, ProgressSpi
 import { ToastrModule } from 'ngx-toastr';
 
 //Components
-import { AppComponent } from './app.component';
+import { AppComponent } from './component/app/app.component';
 import { BookComponent } from './component/book/book.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from "./component/login/login.component";

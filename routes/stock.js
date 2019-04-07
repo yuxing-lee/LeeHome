@@ -11,7 +11,7 @@ require('../config/passport')(passport);
 
 let stocksDoc = new GoogleSpreadsheet(process.env.stocksDoc ? process.env.stocksDoc : config.stocksDoc);
 let stockListDoc = new GoogleSpreadsheet(process.env.stockListDoc ? process.env.stockListDoc : config.stockListDoc);
-let creds = process.env.googleCreds ? JSON.parse(process.env.googleCreds) : config.creds;
+let creds = process.env.googleCreds ? JSON.parse(process.env.googleCreds) : config.googleCreds;
 
 
 router.get('/', passport.authenticate('jwt', { session: false }), function (req, res, next) {
