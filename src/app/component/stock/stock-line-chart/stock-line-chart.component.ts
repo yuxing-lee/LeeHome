@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 //Models
 import { stock } from '../../../models/stock.model';
-import CanvasJS from '../../../../assets/canvasjs.min';
+import CanvasJS from '../../../../assets/js/canvasjs.min.js';
 
 @Component({
     selector: 'app-stock-line-chart',

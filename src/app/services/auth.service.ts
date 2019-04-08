@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CanActivate } from '@angular/router';
 
 import { map, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { UserService } from './user.service';
 
