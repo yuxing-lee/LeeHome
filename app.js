@@ -18,6 +18,18 @@ const config = require('./config/database');
 const user = require('./routes/user');
 const book = require('./routes/book');
 const stock = require('./routes/stock');
+const schedule = require('./routes/schedule');
+
+//cors
+const cors = require('cors');
+const corsOptions = {
+  "origin": "*",
+  "methods": "GET,PUT,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+};
+
+app.use(cors(corsOptions));
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(process.env.mangoConnectString ? process.env.mangoConnectString : config.mangoConnectString , { useNewUrlParser: true, promiseLibrary: mongoose.Promise })
