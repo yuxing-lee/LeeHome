@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 require('../config/passport')(passport);
 
-router.post('/signup', function (req, res) {
+router.post('/signup', passport.authenticate('jwt', { session: false }), function (req, res) {
     if (!req.body.username || !req.body.password) {
         res.send('Please pass username and password.');
     } else {

@@ -18,7 +18,6 @@ const config = require('./config/database');
 const user = require('./routes/user');
 const book = require('./routes/book');
 const stock = require('./routes/stock');
-const schedule = require('./routes/schedule');
 
 //cors
 const cors = require('cors');
